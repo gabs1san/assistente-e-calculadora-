@@ -1,45 +1,48 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+    <link rel="stylesheet" href="../static/index.css">
 
     <title>Escolha de Função</title>
 </head>
+
 <body>
     <h1>Escolha a Função</h1>
     <button id="face">Detecção Facial</button>
     <button id="hand">Contagem de Dedos</button>
 
     <script>
-        document.getElementById("face").onclick = function() {
+        document.getElementById("face").onclick = function () {
             fetch('http://127.0.0.1:5000/process', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ choice: 'face' })  // Envia a escolha para a API
+                body: JSON.stringify({choice: 'face'})  // Envia a escolha para a API
             })
-            .then(response => response.json())
-            .then(data => {
-                console.log("Resultado da análise:", data.result);
-            });
+                .then(response => response.json())
+                .then(data => {
+                    console.log("Resultado da análise:", data.result);
+                });
         };
 
-        document.getElementById("hand").onclick = function() {
+        document.getElementById("hand").onclick = function () {
             fetch('http://127.0.0.1:5000/process', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ choice: 'hand' })  // Envia a escolha para a API
+                body: JSON.stringify({choice: 'hand'})  // Envia a escolha para a API
             })
-            .then(response => response.json())
-            .then(data => {
-                console.log("Resultado da análise:", data.result);
-            });
+                .then(response => response.json())
+                .then(data => {
+                    console.log("Resultado da análise:", data.result);
+                });
         };
     </script>
 </body>
+
 </html>
