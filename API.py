@@ -3,6 +3,7 @@ from assistente import detect_facial_expression
 from calculadora import count_fingers
 from flask import Flask, jsonify, request, render_template 
 
+
 app = Flask(__name__)
 
 @app.route('/')
