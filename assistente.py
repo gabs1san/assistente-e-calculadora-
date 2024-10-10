@@ -42,22 +42,27 @@ def detect_facial_expression():
                     cv2.circle(img, (cx, cy), 1, (0, 255, 0), -1)  # Desenha um círculo em todos os pontos do rosto
 
                 # Obtenha as coordenadas dos pontos da boca
-                left_corner = face_landmarks.landmark[48]  # Ponto 48 (canto esquerdo)
-                right_corner = face_landmarks.landmark[54]  # Ponto 54 (canto direito)
+                left_corner = face_landmarks.landmark[48]  # Ponto 48 (canto esquerdo da boca)
+                right_corner = face_landmarks.landmark[54]  # Ponto 54 (canto direito da boca)
+                upper_lip = face_landmarks.landmark[13]  # Ponto 13 (meio do lábio superior)
+                lower_lip = face_landmarks.landmark[14]  # Ponto 14 (meio do lábio inferior)
 
                 # Calcular coordenadas
                 h, w, _ = img.shape
                 left_x = int(left_corner.x * w)
                 right_x = int(right_corner.x * w)
+                upper_y = int(upper_lip.y * h)
+                lower_y = int(lower_lip.y * h)
 
                 # Desenhe a linha da boca
                 cv2.line(img, (left_x, int(left_corner.y * h)), (right_x, int(right_corner.y * h)), (255, 0, 0), 2)
 
-                # Verifica se a boca está sorrindo ou triste com base na largura
-                mouth_width = right_x - left_x
-                if mouth_width > 80:  # Boca aberta (feliz)
+                # Verifica se a boca está sorrindo ou triste com base na diferença vertical entre o lábio superior e inferior
+                mouth_height = lower_y - upper_y
+
+                if mouth_height > 10:  # Ajuste fino: agora precisa abrir menos a boca para detectar sorriso
                     cv2.putText(img, 'Feliz', (left_x, int(left_corner.y * h) - 10), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 255, 0), 2)
-                else:  # Boca fechada (triste)
+                else:  # Se o lábio inferior está mais próximo do superior (triste)
                     cv2.putText(img, 'Triste', (left_x, int(left_corner.y * h) - 10), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 255), 2)
 
         # Exibe a imagem com os rostos detectados
