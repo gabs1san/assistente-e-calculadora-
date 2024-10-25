@@ -76,3 +76,4 @@ def detect_facial_expression():
     # Libera o vídeo e fecha as janelas
     video.release()
     cv2.destroyAllWindows()
+ 
