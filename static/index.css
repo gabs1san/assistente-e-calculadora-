@@ -1,4 +1,4 @@
-/* Reset básico */
+
 * {
     margin: 0;
     padding: 0;
@@ -25,50 +25,29 @@ html, body {
     text-align: center;
 }
 
-/* Contêiner principal para flexbox */
+
 .container {
     display: flex;
-    flex-direction: column; /* Organiza título e conteúdo em coluna */
-    align-items: center; /* Centraliza o título e o conteúdo horizontalmente */
-    width: 100%; /* Ocupa toda a largura disponível */
-    padding: 0 2rem; /* Espaçamento lateral */
+    flex-direction: column; 
+    align-items: center; 
+    width: 100%; 
+    padding: 0 2rem; 
 }
 
-/* Contêiner para botões e webcam */
-.content {
-    display: flex;
-    justify-content: space-between; /* Espaça botões e webcam */
-    align-items: center; /* Alinha verticalmente */
-    width: 100%; /* Ocupa toda a largura disponível */
-    margin-top: 1rem; /* Espaço acima do contêiner de conteúdo */
-}
 
-/* Contêiner da webcam */
-.webcam-container {
-    width: 500px; /* Largura para a visualização da webcam */
-    height: 300px; /* Altura para a visualização da webcam */
-    background-color: #ddd; /* Cor de fundo para simular a área da webcam */
-    border: 2px solid var(--border-color);
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center; /* Alinha conteúdo verticalmente */
-    justify-content: center; /* Centraliza conteúdo horizontalmente */
-}
 
-/* Estilos gerais */
 h1 {
     font-size: 2.5rem;
     color: #2c3e50;
-    margin-bottom: 1rem; /* Espaço abaixo do título */
+    margin-bottom: 1rem; 
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilo dos botões */
+
 .button-container {
     display: flex;
-    flex-direction: column; /* Organiza botões em coluna */
-    align-items: flex-start; /* Alinha os botões à esquerda */
+    flex-direction: column; 
+    align-items: flex-start; 
 }
 
 button {
@@ -79,7 +58,7 @@ button {
     padding: 1rem 2rem;
     font-size: 1.2rem;
     cursor: pointer;
-    margin: 0.5rem 0; /* Espaçamento vertical entre os botões */
+    margin: 0.5rem 0; 
     transition: background-color 0.3s ease, transform 0.2s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -94,7 +73,7 @@ button:active {
     transform: translateY(0);
 }
 
-/* Layout responsivo */
+
 @media (max-width: 768px) {
     h1 {
         font-size: 2rem;
